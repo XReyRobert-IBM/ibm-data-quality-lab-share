@@ -1,0 +1,234 @@
+{
+  "bindings": [
+    {
+      "rule_id": "BR_CLT_001",
+      "definition_key": "nonblank",
+      "bindings": {
+        "value": {
+          "column": "client_name"
+        }
+      },
+      "explanation": "BR_CLT_001 — Nom renseigné et non blanc"
+    },
+    {
+      "rule_id": "BR_CLT_002",
+      "definition_key": "length",
+      "bindings": {
+        "value": {
+          "column": "client_name"
+        },
+        "minimum": {
+          "literal": 2
+        },
+        "maximum": {
+          "literal": 100
+        }
+      },
+      "explanation": "BR_CLT_002 — Nom de 2 à 100 caractères"
+    },
+    {
+      "rule_id": "BR_CLT_003",
+      "definition_key": "regex",
+      "bindings": {
+        "value": {
+          "column": "client_name"
+        },
+        "pattern": {
+          "literal": "\\A[\\p{L} '\\-]+\\z"
+        }
+      },
+      "explanation": "BR_CLT_003 — Nom : lettres, espaces, traits d’union et apostrophes"
+    },
+    {
+      "rule_id": "BR_CLT_004",
+      "definition_key": "required",
+      "bindings": {
+        "value": {
+          "column": "client_type"
+        }
+      },
+      "explanation": "BR_CLT_004 — Type de client non nul"
+    },
+    {
+      "rule_id": "BR_CLT_005",
+      "definition_key": "type_set",
+      "bindings": {
+        "value": {
+          "column": "client_type"
+        }
+      },
+      "explanation": "BR_CLT_005 — Type de client autorisé"
+    },
+    {
+      "rule_id": "BR_CLT_006",
+      "definition_key": "required",
+      "bindings": {
+        "value": {
+          "column": "client_category"
+        }
+      },
+      "explanation": "BR_CLT_006 — Catégorie non nulle"
+    },
+    {
+      "rule_id": "BR_CLT_007",
+      "definition_key": "category_set",
+      "bindings": {
+        "value": {
+          "column": "client_category"
+        }
+      },
+      "explanation": "BR_CLT_007 — Catégorie autorisée"
+    },
+    {
+      "rule_id": "BR_CLT_008",
+      "definition_key": "conditional",
+      "bindings": {
+        "category": {
+          "column": "client_category"
+        },
+        "clienttype": {
+          "column": "client_type"
+        }
+      },
+      "explanation": "BR_CLT_008 — Un particulier appartient à la catégorie SME"
+    },
+    {
+      "rule_id": "BR_CLT_009",
+      "definition_key": "required",
+      "bindings": {
+        "value": {
+          "column": "client_number"
+        }
+      },
+      "explanation": "BR_CLT_009 — Identifiant client non nul"
+    },
+    {
+      "rule_id": "BR_CLT_010",
+      "definition_key": "unique",
+      "bindings": {
+        "value": {
+          "column": "client_number"
+        }
+      },
+      "explanation": "BR_CLT_010 — Identifiant client unique parmi les valeurs non nulles"
+    },
+    {
+      "rule_id": "BR_CLT_011",
+      "definition_key": "regex",
+      "bindings": {
+        "value": {
+          "column": "client_number"
+        },
+        "pattern": {
+          "literal": "\\A[A-Z]{2}[0-9]{6}\\z"
+        }
+      },
+      "explanation": "BR_CLT_011 — Identifiant : deux lettres majuscules et six chiffres"
+    },
+    {
+      "rule_id": "BR_CLT_012",
+      "definition_key": "nonblank",
+      "bindings": {
+        "value": {
+          "column": "address_line"
+        }
+      },
+      "explanation": "BR_CLT_012 — Adresse renseignée et non blanche"
+    },
+    {
+      "rule_id": "BR_CLT_013",
+      "definition_key": "length",
+      "bindings": {
+        "value": {
+          "column": "address_line"
+        },
+        "minimum": {
+          "literal": 0
+        },
+        "maximum": {
+          "literal": 200
+        }
+      },
+      "explanation": "BR_CLT_013 — Adresse de 200 caractères maximum"
+    },
+    {
+      "rule_id": "BR_CLT_014",
+      "definition_key": "required",
+      "bindings": {
+        "value": {
+          "column": "city"
+        }
+      },
+      "explanation": "BR_CLT_014 — Ville non nulle"
+    },
+    {
+      "rule_id": "BR_CLT_015",
+      "definition_key": "regex",
+      "bindings": {
+        "value": {
+          "column": "postal_code"
+        },
+        "pattern": {
+          "literal": "\\A[0-9]{5}\\z"
+        }
+      },
+      "explanation": "BR_CLT_015 — Code postal de cinq chiffres"
+    },
+    {
+      "rule_id": "BR_CLT_016",
+      "definition_key": "country_set",
+      "bindings": {
+        "value": {
+          "column": "country"
+        }
+      },
+      "explanation": "BR_CLT_016 — Pays autorisé"
+    },
+    {
+      "rule_id": "BR_CLT_017",
+      "definition_key": "required",
+      "bindings": {
+        "value": {
+          "column": "contact_email"
+        }
+      },
+      "explanation": "BR_CLT_017 — Adresse électronique non nulle"
+    },
+    {
+      "rule_id": "BR_CLT_018",
+      "definition_key": "regex",
+      "bindings": {
+        "value": {
+          "column": "contact_email"
+        },
+        "pattern": {
+          "literal": "\\A[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}\\z"
+        }
+      },
+      "explanation": "BR_CLT_018 — Format de l’adresse électronique"
+    },
+    {
+      "rule_id": "BR_CLT_019",
+      "definition_key": "required",
+      "bindings": {
+        "value": {
+          "column": "contact_phone"
+        }
+      },
+      "explanation": "BR_CLT_019 — Téléphone non nul"
+    },
+    {
+      "rule_id": "BR_CLT_020",
+      "definition_key": "regex",
+      "bindings": {
+        "value": {
+          "column": "contact_phone"
+        },
+        "pattern": {
+          "literal": "\\A\\+[0-9]{10,15}\\z"
+        }
+      },
+      "explanation": "BR_CLT_020 — Téléphone : + suivi de 10 à 15 chiffres"
+    }
+  ]
+}

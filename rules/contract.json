@@ -1,0 +1,266 @@
+{
+  "version": "2.0",
+  "source": "{{SCHEMA}}.DQ_V2_CLIENTS_20261015",
+  "technical_key": "LAB_ROW_ID",
+  "population": 200,
+  "ownership": "Synthetic demonstration operated by the account owner",
+  "semantics": {
+    "null": "SQL NULL. Empty and whitespace-only values remain distinct.",
+    "validity": "Non-null values only; empty strings remain eligible.",
+    "mandatory": "Non-null only, except name and address which must also be nonblank.",
+    "conditional": "Evaluate category only when client_type equals Individual; null category fails.",
+    "uniqueness": "All rows sharing a non-null duplicate identifier fail.",
+    "whitespace": "Unicode whitespace and separator-only strings are blank.",
+    "case_and_trimming": "Case-sensitive; do not trim values before enum or format checks.",
+    "length": "Unicode code points, not UTF-8 byte count.",
+    "technical_failure": "A job error or missing binding never counts as a data violation."
+  },
+  "rules": [
+    {
+      "rule_id": "BR_CLT_001",
+      "field": "client_name",
+      "title_fr": "Nom renseigné et non blanc",
+      "family": "nonblank",
+      "dimension": "Completeness",
+      "eligible_sql": "1=1",
+      "valid_sql": "\"client_name\" IS NOT NULL AND NOT REGEXP_LIKE(\"client_name\", '\\A[\\s\\p{Z}]*\\z')",
+      "parameters": {}
+    },
+    {
+      "rule_id": "BR_CLT_002",
+      "field": "client_name",
+      "title_fr": "Nom de 2 à 100 caractères",
+      "family": "length",
+      "dimension": "Validity",
+      "eligible_sql": "\"client_name\" IS NOT NULL",
+      "valid_sql": "CHARACTER_LENGTH(\"client_name\", CODEUNITS32) BETWEEN 2 AND 100",
+      "parameters": {
+        "min": 2,
+        "max": 100
+      }
+    },
+    {
+      "rule_id": "BR_CLT_003",
+      "field": "client_name",
+      "title_fr": "Nom : lettres, espaces, traits d’union et apostrophes",
+      "family": "regex",
+      "dimension": "Validity",
+      "eligible_sql": "\"client_name\" IS NOT NULL",
+      "valid_sql": "REGEXP_LIKE(\"client_name\", '\\A[\\p{L} ''\\-]+\\z')",
+      "parameters": {
+        "pattern": "\\A[\\p{L} '\\-]+\\z",
+        "unicode_letters": true
+      }
+    },
+    {
+      "rule_id": "BR_CLT_004",
+      "field": "client_type",
+      "title_fr": "Type de client non nul",
+      "family": "required",
+      "dimension": "Completeness",
+      "eligible_sql": "1=1",
+      "valid_sql": "\"client_type\" IS NOT NULL",
+      "parameters": {}
+    },
+    {
+      "rule_id": "BR_CLT_005",
+      "field": "client_type",
+      "title_fr": "Type de client autorisé",
+      "family": "allowed_set",
+      "dimension": "Validity",
+      "eligible_sql": "\"client_type\" IS NOT NULL",
+      "valid_sql": "\"client_type\" IN ('Individual', 'Corporate', 'Government', 'Non-Profit')",
+      "parameters": {
+        "values": [
+          "Individual",
+          "Corporate",
+          "Government",
+          "Non-Profit"
+        ]
+      }
+    },
+    {
+      "rule_id": "BR_CLT_006",
+      "field": "client_category",
+      "title_fr": "Catégorie non nulle",
+      "family": "required",
+      "dimension": "Completeness",
+      "eligible_sql": "1=1",
+      "valid_sql": "\"client_category\" IS NOT NULL",
+      "parameters": {}
+    },
+    {
+      "rule_id": "BR_CLT_007",
+      "field": "client_category",
+      "title_fr": "Catégorie autorisée",
+      "family": "allowed_set",
+      "dimension": "Validity",
+      "eligible_sql": "\"client_category\" IS NOT NULL",
+      "valid_sql": "\"client_category\" IN ('Retail', 'SME', 'Enterprise', 'Institutional')",
+      "parameters": {
+        "values": [
+          "Retail",
+          "SME",
+          "Enterprise",
+          "Institutional"
+        ]
+      }
+    },
+    {
+      "rule_id": "BR_CLT_008",
+      "field": "client_category",
+      "title_fr": "Un particulier appartient à la catégorie SME",
+      "family": "conditional",
+      "dimension": "Consistency",
+      "eligible_sql": "\"client_type\" = 'Individual'",
+      "valid_sql": "\"client_category\" = 'SME'",
+      "parameters": {
+        "when_field": "client_type",
+        "when_value": "Individual",
+        "required_value": "SME"
+      }
+    },
+    {
+      "rule_id": "BR_CLT_009",
+      "field": "client_number",
+      "title_fr": "Identifiant client non nul",
+      "family": "required",
+      "dimension": "Completeness",
+      "eligible_sql": "1=1",
+      "valid_sql": "\"client_number\" IS NOT NULL",
+      "parameters": {}
+    },
+    {
+      "rule_id": "BR_CLT_010",
+      "field": "client_number",
+      "title_fr": "Identifiant client unique parmi les valeurs non nulles",
+      "family": "unique",
+      "dimension": "Uniqueness",
+      "eligible_sql": "\"client_number\" IS NOT NULL",
+      "valid_sql": "ID_OCCURRENCES = 1",
+      "parameters": {}
+    },
+    {
+      "rule_id": "BR_CLT_011",
+      "field": "client_number",
+      "title_fr": "Identifiant : deux lettres majuscules et six chiffres",
+      "family": "regex",
+      "dimension": "Validity",
+      "eligible_sql": "\"client_number\" IS NOT NULL",
+      "valid_sql": "REGEXP_LIKE(\"client_number\", '\\A[A-Z]{2}[0-9]{6}\\z')",
+      "parameters": {
+        "pattern": "\\A[A-Z]{2}[0-9]{6}\\z"
+      }
+    },
+    {
+      "rule_id": "BR_CLT_012",
+      "field": "address_line",
+      "title_fr": "Adresse renseignée et non blanche",
+      "family": "nonblank",
+      "dimension": "Completeness",
+      "eligible_sql": "1=1",
+      "valid_sql": "\"address_line\" IS NOT NULL AND NOT REGEXP_LIKE(\"address_line\", '\\A[\\s\\p{Z}]*\\z')",
+      "parameters": {}
+    },
+    {
+      "rule_id": "BR_CLT_013",
+      "field": "address_line",
+      "title_fr": "Adresse de 200 caractères maximum",
+      "family": "length",
+      "dimension": "Validity",
+      "eligible_sql": "\"address_line\" IS NOT NULL",
+      "valid_sql": "CHARACTER_LENGTH(\"address_line\", CODEUNITS32) <= 200",
+      "parameters": {
+        "min": 0,
+        "max": 200
+      }
+    },
+    {
+      "rule_id": "BR_CLT_014",
+      "field": "city",
+      "title_fr": "Ville non nulle",
+      "family": "required",
+      "dimension": "Completeness",
+      "eligible_sql": "1=1",
+      "valid_sql": "\"city\" IS NOT NULL",
+      "parameters": {}
+    },
+    {
+      "rule_id": "BR_CLT_015",
+      "field": "postal_code",
+      "title_fr": "Code postal de cinq chiffres",
+      "family": "regex",
+      "dimension": "Validity",
+      "eligible_sql": "\"postal_code\" IS NOT NULL",
+      "valid_sql": "REGEXP_LIKE(\"postal_code\", '\\A[0-9]{5}\\z')",
+      "parameters": {
+        "pattern": "\\A[0-9]{5}\\z"
+      }
+    },
+    {
+      "rule_id": "BR_CLT_016",
+      "field": "country",
+      "title_fr": "Pays autorisé",
+      "family": "allowed_set",
+      "dimension": "Validity",
+      "eligible_sql": "\"country\" IS NOT NULL",
+      "valid_sql": "\"country\" IN ('US', 'FR', 'DE', 'GB', 'MA', 'ES', 'IT')",
+      "parameters": {
+        "values": [
+          "US",
+          "FR",
+          "DE",
+          "GB",
+          "MA",
+          "ES",
+          "IT"
+        ]
+      }
+    },
+    {
+      "rule_id": "BR_CLT_017",
+      "field": "contact_email",
+      "title_fr": "Adresse électronique non nulle",
+      "family": "required",
+      "dimension": "Completeness",
+      "eligible_sql": "1=1",
+      "valid_sql": "\"contact_email\" IS NOT NULL",
+      "parameters": {}
+    },
+    {
+      "rule_id": "BR_CLT_018",
+      "field": "contact_email",
+      "title_fr": "Format de l’adresse électronique",
+      "family": "regex",
+      "dimension": "Validity",
+      "eligible_sql": "\"contact_email\" IS NOT NULL",
+      "valid_sql": "REGEXP_LIKE(\"contact_email\", '\\A[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}\\z')",
+      "parameters": {
+        "pattern": "\\A[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}\\z",
+        "scope_note": "Simplified anchored format, not full RFC validation."
+      }
+    },
+    {
+      "rule_id": "BR_CLT_019",
+      "field": "contact_phone",
+      "title_fr": "Téléphone non nul",
+      "family": "required",
+      "dimension": "Completeness",
+      "eligible_sql": "1=1",
+      "valid_sql": "\"contact_phone\" IS NOT NULL",
+      "parameters": {}
+    },
+    {
+      "rule_id": "BR_CLT_020",
+      "field": "contact_phone",
+      "title_fr": "Téléphone : + suivi de 10 à 15 chiffres",
+      "family": "regex",
+      "dimension": "Validity",
+      "eligible_sql": "\"contact_phone\" IS NOT NULL",
+      "valid_sql": "REGEXP_LIKE(\"contact_phone\", '\\A\\+[0-9]{10,15}\\z')",
+      "parameters": {
+        "pattern": "\\A\\+[0-9]{10,15}\\z"
+      }
+    }
+  ]
+}

@@ -1,0 +1,284 @@
+[
+  {
+    "LAB_ROW_ID": 3,
+    "field": "client_name",
+    "baseline": null,
+    "corrected": "Claire Martin"
+  },
+  {
+    "LAB_ROW_ID": 8,
+    "field": "client_name",
+    "baseline": "",
+    "corrected": "Hana Martin"
+  },
+  {
+    "LAB_ROW_ID": 12,
+    "field": "client_name",
+    "baseline": "   ",
+    "corrected": "Lea Martin"
+  },
+  {
+    "LAB_ROW_ID": 22,
+    "field": "client_name",
+    "baseline": "A",
+    "corrected": "Bruno Bernard"
+  },
+  {
+    "LAB_ROW_ID": 25,
+    "field": "client_name",
+    "baseline": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+    "corrected": "Emma Bernard"
+  },
+  {
+    "LAB_ROW_ID": 28,
+    "field": "client_name",
+    "baseline": "John99 Smith",
+    "corrected": "Hana Bernard"
+  },
+  {
+    "LAB_ROW_ID": 31,
+    "field": "client_name",
+    "baseline": "Mary@Jones",
+    "corrected": "Karim Bernard"
+  },
+  {
+    "LAB_ROW_ID": 34,
+    "field": "client_name",
+    "baseline": "Tom_Lee#1",
+    "corrected": "Nora Bernard"
+  },
+  {
+    "LAB_ROW_ID": 37,
+    "field": "client_type",
+    "baseline": null,
+    "corrected": "Individual"
+  },
+  {
+    "LAB_ROW_ID": 40,
+    "field": "client_type",
+    "baseline": "Freelancer",
+    "corrected": "Non-Profit"
+  },
+  {
+    "LAB_ROW_ID": 43,
+    "field": "client_type",
+    "baseline": "Indvidual",
+    "corrected": "Government"
+  },
+  {
+    "LAB_ROW_ID": 46,
+    "field": "client_type",
+    "baseline": "Trust",
+    "corrected": "Corporate"
+  },
+  {
+    "LAB_ROW_ID": 50,
+    "field": "client_category",
+    "baseline": null,
+    "corrected": "SME"
+  },
+  {
+    "LAB_ROW_ID": 54,
+    "field": "client_category",
+    "baseline": "Premium",
+    "corrected": "SME"
+  },
+  {
+    "LAB_ROW_ID": 57,
+    "field": "client_category",
+    "baseline": "Retail",
+    "corrected": "SME"
+  },
+  {
+    "LAB_ROW_ID": 61,
+    "field": "client_category",
+    "baseline": "Basic",
+    "corrected": "SME"
+  },
+  {
+    "LAB_ROW_ID": 65,
+    "field": "client_category",
+    "baseline": "VIP",
+    "corrected": "SME"
+  },
+  {
+    "LAB_ROW_ID": 69,
+    "field": "client_category",
+    "baseline": null,
+    "corrected": "SME"
+  },
+  {
+    "LAB_ROW_ID": 72,
+    "field": "client_number",
+    "baseline": null,
+    "corrected": "CL000072"
+  },
+  {
+    "LAB_ROW_ID": 75,
+    "field": "client_number",
+    "baseline": "CL000076",
+    "corrected": "CL000075"
+  },
+  {
+    "LAB_ROW_ID": 80,
+    "field": "client_number",
+    "baseline": "bad-id",
+    "corrected": "CL000080"
+  },
+  {
+    "LAB_ROW_ID": 85,
+    "field": "client_number",
+    "baseline": "cl000085",
+    "corrected": "CL000085"
+  },
+  {
+    "LAB_ROW_ID": 90,
+    "field": "address_line",
+    "baseline": null,
+    "corrected": "100 Rue des Lilas"
+  },
+  {
+    "LAB_ROW_ID": 95,
+    "field": "address_line",
+    "baseline": "",
+    "corrected": "105 Rue des Lilas"
+  },
+  {
+    "LAB_ROW_ID": 100,
+    "field": "address_line",
+    "baseline": "   ",
+    "corrected": "110 Rue des Lilas"
+  },
+  {
+    "LAB_ROW_ID": 105,
+    "field": "address_line",
+    "baseline": "Address Address Address Address Address Address Address Address Address Address Address Address Address Address Address Address Address Address Address Address Address Address Address Address Address Address Address Address Address ",
+    "corrected": "115 Rue des Lilas"
+  },
+  {
+    "LAB_ROW_ID": 110,
+    "field": "address_line",
+    "baseline": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+    "corrected": "120 Rue des Lilas"
+  },
+  {
+    "LAB_ROW_ID": 115,
+    "field": "city",
+    "baseline": null,
+    "corrected": "Paris"
+  },
+  {
+    "LAB_ROW_ID": 120,
+    "field": "postal_code",
+    "baseline": "7500",
+    "corrected": "75019"
+  },
+  {
+    "LAB_ROW_ID": 125,
+    "field": "postal_code",
+    "baseline": "75A01",
+    "corrected": "75004"
+  },
+  {
+    "LAB_ROW_ID": 130,
+    "field": "postal_code",
+    "baseline": "075001",
+    "corrected": "75009"
+  },
+  {
+    "LAB_ROW_ID": 135,
+    "field": "country",
+    "baseline": "UK",
+    "corrected": "FR"
+  },
+  {
+    "LAB_ROW_ID": 140,
+    "field": "country",
+    "baseline": "ZZ",
+    "corrected": "IT"
+  },
+  {
+    "LAB_ROW_ID": 145,
+    "field": "contact_email",
+    "baseline": null,
+    "corrected": "client145@example.test"
+  },
+  {
+    "LAB_ROW_ID": 150,
+    "field": "contact_email",
+    "baseline": "john.smith(at)gmail.com",
+    "corrected": "client150@example.test"
+  },
+  {
+    "LAB_ROW_ID": 155,
+    "field": "contact_email",
+    "baseline": "alice@example",
+    "corrected": "client155@example.test"
+  },
+  {
+    "LAB_ROW_ID": 160,
+    "field": "contact_email",
+    "baseline": "",
+    "corrected": "client160@example.test"
+  },
+  {
+    "LAB_ROW_ID": 165,
+    "field": "contact_phone",
+    "baseline": null,
+    "corrected": "+12025550164"
+  },
+  {
+    "LAB_ROW_ID": 170,
+    "field": "contact_phone",
+    "baseline": "0601020304",
+    "corrected": "+12025550169"
+  },
+  {
+    "LAB_ROW_ID": 175,
+    "field": "contact_phone",
+    "baseline": "+33123",
+    "corrected": "+12025550174"
+  },
+  {
+    "LAB_ROW_ID": 180,
+    "field": "contact_phone",
+    "baseline": "+1234567890123456",
+    "corrected": "+12025550179"
+  },
+  {
+    "LAB_ROW_ID": 185,
+    "field": "contact_phone",
+    "baseline": "",
+    "corrected": "+12025550184"
+  },
+  {
+    "LAB_ROW_ID": 190,
+    "field": "client_name",
+    "baseline": "\t",
+    "corrected": "Jules Simon"
+  },
+  {
+    "LAB_ROW_ID": 195,
+    "field": "address_line",
+    "baseline": " ",
+    "corrected": "205 Rue des Lilas"
+  },
+  {
+    "LAB_ROW_ID": 196,
+    "field": "client_type",
+    "baseline": "",
+    "corrected": "Non-Profit"
+  },
+  {
+    "LAB_ROW_ID": 198,
+    "field": "client_category",
+    "baseline": "",
+    "corrected": "SME"
+  },
+  {
+    "LAB_ROW_ID": 199,
+    "field": "client_number",
+    "baseline": "",
+    "corrected": "CL000199"
+  }
+]

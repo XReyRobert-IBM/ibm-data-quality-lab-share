@@ -1,0 +1,108 @@
+{
+  "status": "Expressions used in the native lab validated on 2026-10-15 and 2026-10-16. Create and verify them in your own project.",
+  "binding_policy": "Use only exact schema columns and explicitly bound constants. Do not use externally managed bindings for this lab.",
+  "definitions": [
+    {
+      "key": "required",
+      "name": "DQ V2 - Required value",
+      "dimension": "Completeness",
+      "expression": "value exists",
+      "requirements": [
+        "BR_CLT_004",
+        "BR_CLT_006",
+        "BR_CLT_009",
+        "BR_CLT_014",
+        "BR_CLT_017",
+        "BR_CLT_019"
+      ]
+    },
+    {
+      "key": "nonblank",
+      "name": "DQ V2 - Nonblank value",
+      "dimension": "Completeness",
+      "expression": "value exists AND NOT (value matches_regex '\\\\A[\\\\s\\\\p{Z}]*\\\\z')",
+      "requirements": [
+        "BR_CLT_001",
+        "BR_CLT_012"
+      ]
+    },
+    {
+      "key": "length",
+      "name": "DQ V2 - Character length range",
+      "dimension": "Validity",
+      "expression": "IF value exists THEN len(value) >= minimum AND len(value) <= maximum",
+      "requirements": [
+        "BR_CLT_002",
+        "BR_CLT_013"
+      ]
+    },
+    {
+      "key": "regex",
+      "name": "DQ V2 - Anchored format",
+      "dimension": "Validity",
+      "expression": "IF value exists THEN value matches_regex pattern",
+      "requirements": [
+        "BR_CLT_003",
+        "BR_CLT_011",
+        "BR_CLT_015",
+        "BR_CLT_018",
+        "BR_CLT_020"
+      ]
+    },
+    {
+      "key": "type_set",
+      "name": "DQ V2 - Allowed client types",
+      "dimension": "Validity",
+      "expression": "IF value exists THEN value in_reference_list {'Individual','Corporate','Government','Non-Profit'}",
+      "requirements": [
+        "BR_CLT_005"
+      ]
+    },
+    {
+      "key": "category_set",
+      "name": "DQ V2 - Allowed categories",
+      "dimension": "Validity",
+      "expression": "IF value exists THEN value in_reference_list {'Retail','SME','Enterprise','Institutional'}",
+      "requirements": [
+        "BR_CLT_007"
+      ]
+    },
+    {
+      "key": "country_set",
+      "name": "DQ V2 - Allowed countries",
+      "dimension": "Validity",
+      "expression": "IF value exists THEN value in_reference_list {'US','FR','DE','GB','MA','ES','IT'}",
+      "requirements": [
+        "BR_CLT_016"
+      ]
+    },
+    {
+      "key": "conditional",
+      "name": "DQ V2 - Individual category SME",
+      "dimension": "Consistency",
+      "expression": "IF clientType = 'Individual' THEN category = 'SME'",
+      "requirements": [
+        "BR_CLT_008"
+      ]
+    },
+    {
+      "key": "unique",
+      "name": "DQ V2 - Unique identifier",
+      "dimension": "Uniqueness",
+      "expression": "IF value exists THEN value unique",
+      "requirements": [
+        "BR_CLT_010"
+      ]
+    }
+  ],
+  "semantic_probes": [
+    "NULL differs from empty string",
+    "whitespace-only is blank",
+    "accented letters pass",
+    "apostrophe and hyphen pass",
+    "both duplicate rows fail",
+    "conditional null category fails",
+    "out-of-scope clients are not evaluated by the condition",
+    "missing contact_phone binding stops"
+  ]
+}

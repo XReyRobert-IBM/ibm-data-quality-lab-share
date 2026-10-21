@@ -1,0 +1,24 @@
+Portefeuille de 20 exigences métier — clients synthétiques
+Conserver les identifiants, la portée et les distinctions NULL / vide / blanc.
+Colonnes réelles : client_number, client_name, client_type, client_category, address_line, city, postal_code, country, contact_email, contact_phone.
+
+BR_CLT_001 — client_name : Nom renseigné et non blanc.
+BR_CLT_002 — client_name : Nom de 2 à 100 caractères.
+BR_CLT_003 — client_name : Nom : lettres, espaces, traits d’union et apostrophes.
+BR_CLT_004 — client_type : Type de client non nul.
+BR_CLT_005 — client_type : Type de client autorisé.
+BR_CLT_006 — client_category : Catégorie non nulle.
+BR_CLT_007 — client_category : Catégorie autorisée.
+BR_CLT_008 — client_category : Un particulier appartient à la catégorie SME.
+BR_CLT_009 — client_number : Identifiant client non nul.
+BR_CLT_010 — client_number : Identifiant client unique parmi les valeurs non nulles.
+BR_CLT_011 — client_number : Identifiant : deux lettres majuscules et six chiffres.
+BR_CLT_012 — address_line : Adresse renseignée et non blanche.
+BR_CLT_013 — address_line : Adresse de 200 caractères maximum.
+BR_CLT_014 — city : Ville non nulle.
+BR_CLT_015 — postal_code : Code postal de cinq chiffres.
+BR_CLT_016 — country : Pays autorisé.
+BR_CLT_017 — contact_email : Adresse électronique non nulle.
+BR_CLT_018 — contact_email : Format de l’adresse électronique.
+BR_CLT_019 — contact_phone : Téléphone non nul.
+BR_CLT_020 — contact_phone : Téléphone : + suivi de 10 à 15 chiffres.

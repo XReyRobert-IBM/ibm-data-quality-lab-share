@@ -1,0 +1,25 @@
+{
+  "provenance": "Synthetic 200-client fixture for this lab.",
+  "rows": 200,
+  "business_columns": [
+    "client_number",
+    "client_name",
+    "client_type",
+    "client_category",
+    "address_line",
+    "city",
+    "postal_code",
+    "country",
+    "contact_email",
+    "contact_phone"
+  ],
+  "technical_key": "LAB_ROW_ID",
+  "null_encoding": {
+    "json": "null",
+    "csv": "\\N",
+    "sql": "NULL"
+  },
+  "loading": "Use SQL seed; CSV null marker requires explicit importer configuration.",
+  "table": "{{SCHEMA}}.DQ_V2_CLIENTS_20261015",
+  "data_classification": "synthetic"
+}
